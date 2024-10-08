@@ -80,4 +80,10 @@ public class MoveToWaypoint : MonoBehaviour
         m_Animator.SetBool("Walking", true);
     }
 
+    // Function to disable this script
+    public void DisableScript()
+    {
+        this.enabled = false;
+    }
+
 }
