@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class IncidentCountdown : MonoBehaviour
 {
     // Variables for countdown and control
+    public bool IsActive = false;
     public float countdownTime = 5f; // Default countdown time
     public bool useRandomTime = false; // Toggle for random countdown time
     public float randomMin = 3f; // Minimum random countdown time
@@ -28,14 +29,19 @@ public class IncidentCountdown : MonoBehaviour
 
     void Update()
     {
-        // Reduce countdown timer
-        currentTime -= Time.deltaTime;
 
-        // Check if countdown has finished
-        if (currentTime <= 0f)
+        if (IsActive)
         {
-            ActivateAction();
+            // Reduce countdown timer
+            currentTime -= Time.deltaTime;
+
+            // Check if countdown has finished
+            if (currentTime <= 0f)
+            {
+                ActivateAction();
+            }
         }
+
     }
 
     void ActivateAction()
@@ -55,5 +61,10 @@ public class IncidentCountdown : MonoBehaviour
 
         // Optionally destroy this script to stop further updates
         Destroy(this);
+    }
+
+    public void Activate()
+    {
+        IsActive = true;
     }
 }
