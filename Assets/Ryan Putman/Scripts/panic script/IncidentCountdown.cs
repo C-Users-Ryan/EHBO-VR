@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class IncidentCountdown : MonoBehaviour
 {
@@ -45,11 +46,11 @@ public class IncidentCountdown : MonoBehaviour
             animator.SetBool("lean", true);
         }
 
-        // Find and disable all instances of ScriptToDisable
-        MoveToWaypoint[] scriptsToDisable = FindObjectsOfType<MoveToWaypoint>();
-        foreach (MoveToWaypoint script in scriptsToDisable)
+        // Find and disable all NavMeshAgents in the scene
+        NavMeshAgent[] navAgents = FindObjectsOfType<NavMeshAgent>();
+        foreach (NavMeshAgent agent in navAgents)
         {
-            script.DisableScript();
+            agent.enabled = false;
         }
 
         // Optionally destroy this script to stop further updates
