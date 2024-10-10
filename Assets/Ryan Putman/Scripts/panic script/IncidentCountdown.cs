@@ -12,7 +12,7 @@ public class IncidentCountdown : MonoBehaviour
     public float randomMin = 3f; // Minimum random countdown time
     public float randomMax = 10f; // Maximum random countdown time
 
-    public Animator animator; // Reference to the animator
+    public Animator[] objectsToAnimate; // Reference to the animators
 
     private float currentTime;
 
@@ -29,7 +29,6 @@ public class IncidentCountdown : MonoBehaviour
 
     void Update()
     {
-
         if (IsActive)
         {
             // Reduce countdown timer
@@ -41,16 +40,12 @@ public class IncidentCountdown : MonoBehaviour
                 ActivateAction();
             }
         }
-
     }
 
     void ActivateAction()
     {
-        // Set Animator's 'lean' bool to true
-        if (animator != null)
-        {
-            animator.SetBool("lean", true);
-        }
+        // Trigger the animation on all specified objects
+        SwapAnimation();
 
         // Find and disable all NavMeshAgents in the scene
         NavMeshAgent[] navAgents = FindObjectsOfType<NavMeshAgent>();
@@ -59,12 +54,26 @@ public class IncidentCountdown : MonoBehaviour
             agent.enabled = false;
         }
 
-        // Optionally destroy this script to stop further updates
+        // Optionally, you can destroy this script to stop further updates
         Destroy(this);
     }
 
+    // Call this method to start the countdown
     public void Activate()
     {
         IsActive = true;
+        currentTime = countdownTime; // Reset countdown time when activated
+    }
+
+    // Swap animation on the specified animator objects
+    public void SwapAnimation()
+    {
+        foreach (Animator animator in objectsToAnimate)
+        {
+            if (animator != null)
+            {
+                animator.SetBool("shocked", true); // Set the 'shocked' animation parameter to true
+            }
+        }
     }
 }
