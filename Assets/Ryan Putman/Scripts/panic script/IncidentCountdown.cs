@@ -13,8 +13,10 @@ public class IncidentCountdown : MonoBehaviour
     public float randomMax = 10f; // Maximum random countdown time
 
     public Animator[] objectsToAnimate; // Reference to the animators
+    public AudioSource countdownEndSound; // Reference to the AudioSource for the sound effect
 
     private float currentTime;
+    private bool countdownFinished = false; // To track if the countdown is already finished
 
     void Start()
     {
@@ -29,7 +31,7 @@ public class IncidentCountdown : MonoBehaviour
 
     void Update()
     {
-        if (IsActive)
+        if (IsActive && !countdownFinished)
         {
             // Reduce countdown timer
             currentTime -= Time.deltaTime;
@@ -44,6 +46,8 @@ public class IncidentCountdown : MonoBehaviour
 
     void ActivateAction()
     {
+        countdownFinished = true; // Mark that countdown is finished
+
         // Trigger the animation on all specified objects
         SwapAnimation();
 
@@ -52,6 +56,12 @@ public class IncidentCountdown : MonoBehaviour
         foreach (NavMeshAgent agent in navAgents)
         {
             agent.speed = 0; // Set speed to 0 to stop the agents
+        }
+
+        // Play the sound effect only when the countdown finishes
+        if (countdownEndSound != null)
+        {
+            countdownEndSound.Play();
         }
 
         // Optionally, you can destroy this script to stop further updates
@@ -63,6 +73,7 @@ public class IncidentCountdown : MonoBehaviour
     {
         IsActive = true;
         currentTime = countdownTime; // Reset countdown time when activated
+        countdownFinished = false;  // Reset the countdown finished flag
     }
 
     // Swap animation on the specified animator objects
