@@ -47,11 +47,11 @@ public class IncidentCountdown : MonoBehaviour
         // Trigger the animation on all specified objects
         SwapAnimation();
 
-        // Find and disable all NavMeshAgents in the scene
+        // Find and stop all NavMeshAgents in the scene by setting their speed to 0
         NavMeshAgent[] navAgents = FindObjectsOfType<NavMeshAgent>();
         foreach (NavMeshAgent agent in navAgents)
         {
-            agent.enabled = false;
+            agent.speed = 0; // Set speed to 0 to stop the agents
         }
 
         // Optionally, you can destroy this script to stop further updates
