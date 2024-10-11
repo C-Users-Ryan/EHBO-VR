@@ -4027,7 +4027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8420348920034494390, guid: 2efa1c1265e22344eba866fcc0aa15bf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4263006151630154936, guid: 2efa1c1265e22344eba866fcc0aa15bf, type: 3}
@@ -12143,7 +12143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8420348920034494390, guid: 2efa1c1265e22344eba866fcc0aa15bf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4263006151630154936, guid: 2efa1c1265e22344eba866fcc0aa15bf, type: 3}
@@ -17801,6 +17801,7 @@ MonoBehaviour:
   - {fileID: 481295894}
   - {fileID: 10362652}
   - {fileID: 357803782}
+  - {fileID: 1751855224}
   Activate: 0
 --- !u!82 &1498765849
 AudioSource:
