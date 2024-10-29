@@ -125,8 +125,8 @@ public class MoveToWaypoint : MonoBehaviour
     }
 
     // Function to disable this script
-    public void DisableScript()
-    {
-        this.enabled = false;
-    }
+/*        public void DisableScript()
+        {
+            this.enabled = false;
+        }*/
 }

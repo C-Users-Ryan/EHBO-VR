@@ -18,6 +18,9 @@ public class IncidentCountdown : MonoBehaviour
     private float currentTime;
     private bool countdownFinished = false; // To track if the countdown is already finished
 
+    // New: Add references to characters to move
+    public CharacterMovementOnIncident[] charactersToMove;
+
     void Start()
     {
         // Set countdown time
@@ -64,8 +67,18 @@ public class IncidentCountdown : MonoBehaviour
             countdownEndSound.Play();
         }
 
+        // New: Move the characters to the target location
+        foreach (var character in charactersToMove)
+        {
+            if (character != null)
+            {
+                Debug.Log("message sent");
+                character.OnIncidentTriggered();
+            }
+        }
+
         // Optionally, you can destroy this script to stop further updates
-        Destroy(this);
+/*        Destroy(this);*/
     }
 
     // Call this method to start the countdown
