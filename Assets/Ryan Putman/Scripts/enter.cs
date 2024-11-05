@@ -35,7 +35,10 @@ public class enter : MonoBehaviour
     {
         if (isColliderActive)
         {
-            PlayAnimation();
+            if (other.CompareTag("Player"))  // Adjust detection as needed
+            {
+                PlayAnimation();
+            }
         }
     }
 
@@ -43,7 +46,10 @@ public class enter : MonoBehaviour
     {
         if (isColliderActive)
         {
-            StopAnimation();
+            if (other.CompareTag("Player"))  
+            {
+                StopAnimation();
+            }
         }
     }
 
