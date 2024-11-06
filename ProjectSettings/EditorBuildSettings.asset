@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Ryan Putman/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Ryan Putman/Scenes/Park Quest 3 test scene.unity
+    guid: 5a902de27ff00e547ab4e2569d6141de
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 3a3e484f4c4165740b0608a7a1641fd8, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 49045fa6f7cf1f04c8da7138919c2e10, type: 2}
