@@ -6,44 +6,47 @@ using UnityEngine.UI;
 
 public class EHBOStappenChecker : MonoBehaviour
 {
-    [SerializeField] private List<string> correctOrder; // Correct sequence of steps
+    [SerializeField] private List<string> correctOrder;      // Correct sequence of steps
     private List<string> completedSteps = new List<string>(); // Tracks completed steps
-    public TextMeshProUGUI debugPanelText;
-    public GameObject summaryPanel;
-    public TextMeshProUGUI summaryText;
-    public Button resetButton;
+    [SerializeField] private TextMeshProUGUI debugPanelText; // For real-time debug display
+    [SerializeField] private GameObject summaryPanel;       // Panel to display final summary
+    [SerializeField] private TextMeshProUGUI summaryText;   // Summary display text
+    [SerializeField] private Button resetButton;            // Reset button for retrying the exercise
 
     void Start()
     {
-        summaryPanel.SetActive(false);
-        resetButton.onClick.AddListener(ResetLevel);
+        summaryPanel.SetActive(false);                       // Hide summary at start
+        resetButton.onClick.AddListener(ResetLevel);         // Assign reset function to button
+        DisplayDebugInfo();                                  // Initialize debug display
     }
 
+    // Method to register a completed step from another script
     public void RegisterStep(string stepName)
     {
-        // Prevents consecutive duplicate actions
+        // Prevent consecutive duplicate steps
         if (completedSteps.Count == 0 || completedSteps[completedSteps.Count - 1] != stepName)
         {
             completedSteps.Add(stepName);
             DisplayDebugInfo();
 
-            // Check if the completed steps match the required length
-            if (completedSteps.Count == correctOrder.Count)
+            // Validate order if the final step in the correct sequence is reached
+            if (stepName == "hart compressie" || completedSteps.Count == correctOrder.Count)
             {
                 ValidateOrder();
             }
         }
         else
         {
-            Debug.Log($"Action '{stepName}' ignored to prevent duplicate consecutive entry.");
+            Debug.Log($"Action '{stepName}' ignored to prevent consecutive duplicate entry.");
         }
     }
 
-    public void ValidateOrder()
+    // Validates the order of completed steps against the correct order
+    private void ValidateOrder()
     {
         bool isCorrect = true;
 
-        // Compares completed steps to the correct order
+        // Compare each completed step with the correct order
         for (int i = 0; i < correctOrder.Count; i++)
         {
             if (i >= completedSteps.Count || completedSteps[i] != correctOrder[i])
@@ -53,34 +56,36 @@ public class EHBOStappenChecker : MonoBehaviour
             }
         }
 
+        // Show the summary with feedback on the order
         ShowSummary(isCorrect);
     }
 
+    // Display real-time debug information for completed steps
     private void DisplayDebugInfo()
     {
         string debugText = "Steps Completed:\n";
-
         for (int i = 0; i < completedSteps.Count; i++)
         {
             debugText += $"{i + 1}. {completedSteps[i]}\n";
         }
-
         debugPanelText.text = debugText;
-        Debug.Log(debugText);
+        Debug.Log(debugText); // Output to console as well
     }
 
+    // Display the summary panel with final results and comparison if incorrect
     private void ShowSummary(bool isCorrect)
     {
-        summaryPanel.SetActive(true);
-        string result = isCorrect ? "Correct Order!" : "Incorrect Order!";
+        summaryPanel.SetActive(true); // Show the summary panel
 
+        string result = isCorrect ? "Correct Order!" : "Incorrect Order!";
         string summary = "Order of Steps Completed:\n";
+
         for (int i = 0; i < completedSteps.Count; i++)
         {
             summary += $"{i + 1}. {completedSteps[i]}\n";
         }
 
-        // If the order is incorrect, display the correct order as well
+        // If incorrect, show the correct order as reference
         if (!isCorrect)
         {
             summary += "\nCorrect Order:\n";
@@ -94,10 +99,12 @@ public class EHBOStappenChecker : MonoBehaviour
         summaryText.text = summary;
     }
 
+    // Resets the progress for retrying the exercise
     private void ResetLevel()
     {
         completedSteps.Clear();
         summaryPanel.SetActive(false);
-        DisplayDebugInfo();  // Clear debug display
+        DisplayDebugInfo();  // Clear and refresh debug display
+        Debug.Log("Exercise reset.");
     }
 }
