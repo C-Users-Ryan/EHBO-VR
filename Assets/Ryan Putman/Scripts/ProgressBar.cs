@@ -2,106 +2,90 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 public class ProgressBar : MonoBehaviour
 {
-    [SerializeField] private RawImage background;         // Background image of the progress bar
-    [SerializeField] private RawImage fill;               // Fill image that grows with progress
-    [SerializeField] private float actionDuration = 2f;   // Duration for the bar to fill (in seconds)
-    [SerializeField] private Collider targetCollider;     // Collider that triggers the progress bar
+    [SerializeField] private RawImage backgroundImage;         // Background image of the loading bar
+    [SerializeField] private RawImage fillImage;               // Fill image that grows with progress
+    [SerializeField] private float fillDuration = 2f;          // Time in seconds to fill the bar
+    private RectTransform fillRectTransform;                   // Reference to the RectTransform of the fill image
+    private float initialWidth;                                // Initial width of the fill image
+    private Coroutine fillCoroutine;                           // Coroutine to control filling
 
-    private float currentProgress = 0f;                   // Tracks current progress (0 to 1)
-    private bool isTouching = false;                      // Whether the collider is being touched
-    private RectTransform fillRectTransform;              // Reference to the RectTransform of the fill image
-    private float initialFillWidth;                       // Original width of the fill image
-
-    void Start()
+    private void Start()
     {
         // Get RectTransform for the fill image and record its original width
-        fillRectTransform = fill.GetComponent<RectTransform>();
-        initialFillWidth = fillRectTransform.sizeDelta.x;
+        fillRectTransform = fillImage.GetComponent<RectTransform>();
+        initialWidth = fillRectTransform.sizeDelta.x;
 
         // Ensure the fill image and background are invisible initially
         SetProgressBarVisibility(false);
         SetFillAmount(0f);
     }
 
-    void Update()
+    // Called when the player enters the collider
+    private void OnTriggerEnter(Collider other)
     {
-        if (isTouching)
+        if (other.CompareTag("Player")) // Check if the collider belongs to an object with the "Player" tag
         {
-            // Increment progress over time
-            currentProgress += Time.deltaTime / actionDuration;
-
-            // Update the fill image based on current progress
-            SetFillAmount(currentProgress);
-
-            // Check if progress is complete
-            if (currentProgress >= 1f)
+            if (fillCoroutine == null)  // Only start filling if not already in progress
             {
-                ActionCompleted();
+                SetProgressBarVisibility(true);  // Show the progress bar
+                fillCoroutine = StartCoroutine(FillProgress());
             }
         }
     }
 
-    // Sets the visibility of the progress bar images
-    private void SetProgressBarVisibility(bool isVisible)
-    {
-        if (background != null) background.enabled = isVisible;
-        if (fill != null) fill.enabled = isVisible;
-    }
-
-    // Sets the fill amount of the progress bar based on progress (0-1)
-    private void SetFillAmount(float progress)
-    {
-        // Clamp progress to range [0, 1]
-        progress = Mathf.Clamp01(progress);
-
-        // Adjust the fill image's width based on progress
-        fillRectTransform.sizeDelta = new Vector2(initialFillWidth * progress, fillRectTransform.sizeDelta.y);
-    }
-
-    // Called when the action completes (when progress reaches 100%)
-    private void ActionCompleted()
-    {
-        Debug.Log("Action completed!");
-        ResetProgress();
-    }
-
-    // Resets the progress bar and hides it
-    private void ResetProgress()
-    {
-        currentProgress = 0f;
-        SetFillAmount(0f);
-        SetProgressBarVisibility(false);
-    }
-
-    // Trigger event for when the collider is entered
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other == targetCollider)
-        {
-            isTouching = true;
-            SetProgressBarVisibility(true);  // Show the progress bar
-        }
-    }
-
-    // Trigger event for while the collider is being touched
-    private void OnTriggerStay(Collider other)
-    {
-        if (other == targetCollider)
-        {
-            isTouching = true;
-        }
-    }
-
-    // Trigger event for when the collider is exited
+    // Called when the player exits the collider
     private void OnTriggerExit(Collider other)
     {
-        if (other == targetCollider)
+        if (other.CompareTag("Player")) // Check if the collider belongs to an object with the "Player" tag
         {
-            isTouching = false;
-            ResetProgress();  // Reset and hide the progress bar
+            if (fillCoroutine != null)
+            {
+                StopCoroutine(fillCoroutine);
+                fillCoroutine = null;
+            }
+            ResetProgress();  // Reset the progress and hide the progress bar
         }
+    }
+
+    // Coroutine to gradually fill the progress bar over the specified duration
+    private IEnumerator FillProgress()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fillDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsedTime / fillDuration);
+            SetFillAmount(progress);  // Update fill image width based on progress
+            yield return null;
+        }
+
+        // Optional: Handle any logic for when the loading is complete
+        Debug.Log("Loading complete!");
+        fillCoroutine = null;  // Reset coroutine when complete
+    }
+
+    // Sets the visibility of the progress bar
+    private void SetProgressBarVisibility(bool isVisible)
+    {
+        backgroundImage.enabled = isVisible;
+        fillImage.enabled = isVisible;
+    }
+
+    // Sets the fill amount of the progress bar based on progress (0 to 1)
+    private void SetFillAmount(float progress)
+    {
+        progress = Mathf.Clamp01(progress);  // Ensure progress is between 0 and 1
+        fillRectTransform.sizeDelta = new Vector2(initialWidth * progress, fillRectTransform.sizeDelta.y);
+    }
+
+    // Resets the progress bar to 0 and hides it
+    private void ResetProgress()
+    {
+        SetFillAmount(0f);
+        SetProgressBarVisibility(false);
     }
 }
