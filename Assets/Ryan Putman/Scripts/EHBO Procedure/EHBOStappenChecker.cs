@@ -11,12 +11,11 @@ public class EHBOStappenChecker : MonoBehaviour
     [SerializeField] private TextMeshProUGUI debugPanelText; // For real-time debug display
     [SerializeField] private GameObject summaryPanel;       // Panel to display final summary
     [SerializeField] private TextMeshProUGUI summaryText;   // Summary display text
-    [SerializeField] private Button resetButton;            // Reset button for retrying the exercise
+
 
     void Start()
     {
         summaryPanel.SetActive(false);                       // Hide summary at start
-        resetButton.onClick.AddListener(ResetLevel);         // Assign reset function to button
         DisplayDebugInfo();                                  // Initialize debug display
     }
 

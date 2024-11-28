@@ -8,49 +8,41 @@ namespace EHBOVR.Calibration
     {
         [SerializeField] private PlayAreaBehaviour playAreaBehaviour;
 
-        [SerializeField] private Vector2 minimumBounds;
-
         [SerializeField] private BoundIndicator boundIndicatorHorizontal;
         [SerializeField] private BoundIndicator boundIndicatorVertical;
-        [SerializeField] private GameObject startButton;
-
-        private bool _isValid;
 
         void Start()
         {
-            boundIndicatorHorizontal.SetDimension(minimumBounds.x, minimumBounds.y * .5f);
-            boundIndicatorVertical.SetDimension(minimumBounds.y, minimumBounds.x * .5f);
+            // Dynamically set the bound indicators based on the detected play area size
+            UpdateBoundIndicators();
         }
 
-        // TODO: Verify bounds based on some bounds-changed-event rather than update
-        private void Update()
+        void Update()
         {
-            VerifyBounds();
-            ToggleStartButton(_isValid);
+            // Keep indicators visible until the game starts
+            if (!playAreaBehaviour.gameStarted)
+            {
+                UpdateBoundIndicators();
+            }
+            else
+            {
+/*                boundIndicatorHorizontal.SetVisibility(false);
+                boundIndicatorVertical.SetVisibility(false);*/
+            }
         }
 
-        private void ToggleStartButton(bool activate)
+        private void UpdateBoundIndicators()
         {
-            startButton.SetActive(activate);
-        }
-
-        private void VerifyBounds()
-        {
+            // Get the current play area dimensions
             Vector2 bounds = playAreaBehaviour.GetDimensions();
 
-            bool isHorizontalValid = bounds.x >= minimumBounds.x;
-            bool isVerticalValid = bounds.y >= minimumBounds.y;
-            
-            boundIndicatorHorizontal.SetValid(isHorizontalValid);
-            boundIndicatorVertical.SetValid(isVerticalValid);
+            // Set dimensions for the indicators without moving their positions
+            boundIndicatorHorizontal.SetDimension(bounds.x, bounds.y * 0.5f);
+            boundIndicatorVertical.SetDimension(bounds.y, bounds.x * 0.5f);
 
-            _isValid = isVerticalValid && isHorizontalValid;
-        }
-
-        // TODO: Currently unused, ought to be bound to some 'OnReorient' event.
-        public void OnTransitionButtonPressed()
-        {
-            PersistentManager.Instance.LoadSuburbanLevel();
+            // Keep the indicators valid and at their current positions
+            boundIndicatorHorizontal.SetValid(true);
+            boundIndicatorVertical.SetValid(true);
         }
     }
 }
