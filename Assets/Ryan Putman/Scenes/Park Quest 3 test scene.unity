@@ -7622,6 +7622,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: kindle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0566c394103ac7a428d4ea66affdd117, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -20878,6 +20882,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1536280250}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7192818547691322734, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1549895527}
     - targetCorrespondingSourceObject: {fileID: 3134654526103614561, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 491668170}
@@ -34406,7 +34413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1040208672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44827,6 +44834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: kindle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0566c394103ac7a428d4ea66affdd117, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -48313,6 +48324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cornerMarkerPrefab: {fileID: 5320185682457160878, guid: 0fd9ac27dd224fe458b3cc2720645041, type: 3}
+  randomObjectPrefab: {fileID: 5320185682457160878, guid: 0fd9ac27dd224fe458b3cc2720645041, type: 3}
   cameraRig: {fileID: 1549895523}
 --- !u!1001 &1421253203
 PrefabInstance:
@@ -50252,6 +50264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransitionButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7089252863474253390, guid: f4212d32fda4ead4a85bde1be5cfcb97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7529278737400451614, guid: f4212d32fda4ead4a85bde1be5cfcb97, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.40000004
@@ -51869,17 +51885,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3828068470096251881, guid: 8f405fcc79aad6442b9dcccaca5d5d4e, type: 3}
   m_PrefabInstance: {fileID: 1543948279}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1549895522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7192818547691322734, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
+  m_PrefabInstance: {fileID: 623746720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1549895523 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7192818547680544896, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
   m_PrefabInstance: {fileID: 623746720}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1549895522}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &1549895527
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549895522}
+  m_Enabled: 1
 --- !u!1 &1550298949
 GameObject:
   m_ObjectHideFlags: 0
@@ -54238,6 +54267,10 @@ PrefabInstance:
     - target: {fileID: 7089252863474253390, guid: f4212d32fda4ead4a85bde1be5cfcb97, type: 3}
       propertyPath: m_Name
       value: TransitionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089252863474253390, guid: f4212d32fda4ead4a85bde1be5cfcb97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7529278737400451614, guid: f4212d32fda4ead4a85bde1be5cfcb97, type: 3}
       propertyPath: m_LocalScale.x
