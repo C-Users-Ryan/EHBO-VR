@@ -4,7 +4,7 @@ using UnityEngine;
 using Oculus.Platform;
 using Oculus.Platform.Models;
 
-public class PlayAreaMarker : MonoBehaviour
+public class TeacherDemoTestAreaScript : MonoBehaviour
 {
     public GameObject cornerMarkerPrefab; // Prefab for the markers to place at corners and along the edges
     public GameObject randomObjectPrefab; // Prefab to spawn at a random location
@@ -13,6 +13,7 @@ public class PlayAreaMarker : MonoBehaviour
 
     private Vector3[] boundaryPointsWorld; // Store the boundary points in world space
     public float markerInterval = 1.0f; // Distance between markers along the boundary
+    public float randomObjectBuffer = 2.0f; // Buffer distance to ensure the random object is not too close to the boundary
 
     void Start()
     {
@@ -94,6 +95,7 @@ public class PlayAreaMarker : MonoBehaviour
         }
 
         Vector3 randomPosition = GetRandomPointWithinBoundary(boundaryPointsWorld);
+        randomPosition = ApplyBufferToPosition(randomPosition, randomObjectBuffer);
         Debug.Log("Attempting to spawn object at: " + randomPosition);
 
         GameObject spawnedObject = Instantiate(randomObjectPrefab, randomPosition, Quaternion.identity);
@@ -124,6 +126,25 @@ public class PlayAreaMarker : MonoBehaviour
         float randomX = Random.Range(minX, maxX);
         float randomZ = Random.Range(minZ, maxZ);
         return new Vector3(randomX, boundaryPoints[0].y, randomZ);
+    }
+
+    // Apply the buffer to ensure the object is not too close to the boundary
+    private Vector3 ApplyBufferToPosition(Vector3 position, float buffer)
+    {
+        Vector3 adjustedPosition = position;
+
+        // Ensure the random object is within the buffer area
+        if (adjustedPosition.x < buffer)
+            adjustedPosition.x = buffer;
+        else if (adjustedPosition.x > (boundaryPointsWorld[0].x - buffer))
+            adjustedPosition.x = boundaryPointsWorld[0].x - buffer;
+
+        if (adjustedPosition.z < buffer)
+            adjustedPosition.z = buffer;
+        else if (adjustedPosition.z > (boundaryPointsWorld[0].z - buffer))
+            adjustedPosition.z = boundaryPointsWorld[0].z - buffer;
+
+        return adjustedPosition;
     }
 
     private bool IsPointInsidePolygon(Vector3[] polygon, Vector3 point)
