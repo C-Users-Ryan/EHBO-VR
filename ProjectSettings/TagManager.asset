@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Flashlight
   - body
+  - SamplesInfoPanel
+  - SecondCollider
+  - FirstCollider
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ public class HandVisability : MonoBehaviour
         
     }
 
+
     private void OnTriggerExit(Collider other)
     {
 
