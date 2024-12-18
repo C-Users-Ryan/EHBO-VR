@@ -4450,7 +4450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &660729477
 Transform:
   m_ObjectHideFlags: 0
@@ -7354,8 +7354,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000057, y: 0.000075}
+  m_SizeDelta: {x: 0.234238, y: 0.205377}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063681725
 MonoBehaviour:
@@ -8584,7 +8584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2146382708418449598, guid: fdf44afcf98a0ac47bf7cdf266078fba, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3456451494190643747, guid: fdf44afcf98a0ac47bf7cdf266078fba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10367,10 +10367,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 405890920047626990, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+      propertyPath: backgroundImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468313647857467725, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+      propertyPath: ObjectToMakeVisable
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3117218942043742276, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6faa83d5f7edf4045aab78ae1ed50298, type: 2}
+    - target: {fileID: 7521061388139140580, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+      propertyPath: ObjectToMakeVisable
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8568496746738442372, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
       propertyPath: m_Name
       value: stop on command
@@ -10432,7 +10444,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2875888376410625426, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+    - {fileID: 2648825894563653134, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+    - {fileID: 3269593994229843790, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+    - {fileID: 896702152780052082, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+    - {fileID: 5698208732379590616, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+    - {fileID: 6794974969098177940, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+    - {fileID: 4710008779996379804, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+    - {fileID: 8392763981442739009, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
+    - {fileID: 7642905855330372897, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8568496746738442372, guid: a7a6dbebf4489b34ab7e01eb82f81965, type: 3}
@@ -11041,28 +11062,16 @@ MonoBehaviour:
   _whenSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1207276344}
-        m_TargetAssemblyTypeName: Oculus.Interaction.AudioTrigger, Oculus.Interaction.Samples
-        m_MethodName: PlayAudio
-        m_Mode: 1
+      - m_Target: {fileID: 2047820725}
+        m_TargetAssemblyTypeName: scenetransition, Assembly-CSharp
+        m_MethodName: SwitchToScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2130473568}
-        m_TargetAssemblyTypeName: modeselection, Assembly-CSharp
-        m_MethodName: ActivateTask4
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Park Quest 3 test scene
           m_BoolArgument: 0
         m_CallState: 2
   _whenUnselect:
@@ -13963,7 +13972,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: basis detectie
+  m_text: scene transition
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eb44739c484b1b54bbc1a0d4d9dd1a50, type: 2}
   m_sharedMaterial: {fileID: -5839354330806206608, guid: eb44739c484b1b54bbc1a0d4d9dd1a50, type: 2}
@@ -15800,8 +15809,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5968364, y: 1.5968364, z: 1.5968364}
-  m_Center: {x: 0, y: 0, z: 0.2984181}
+  m_Size: {x: 0.9723817, y: 1.0272396, z: 1.0171098}
+  m_Center: {x: -0.017454848, y: -0.01582086, z: 0.008554757}
 --- !u!23 &1942319790
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16972,6 +16981,50 @@ MonoBehaviour:
   _fingerFeatureStateProvider: {fileID: 570898481}
   _shapes:
   - {fileID: 11400000, guid: 6f3a0d6ecb40cc44d943a48d2a7b6f85, type: 2}
+--- !u!1 &2047820724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2047820726}
+  - component: {fileID: 2047820725}
+  m_Layer: 0
+  m_Name: scene change
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2047820725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047820724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d83a47c0e418f8489e84b6d9a47ed58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2047820726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047820724}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.23602287, y: 1.5339144, z: -0.5828347}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2056457959
 GameObject:
   m_ObjectHideFlags: 0
@@ -18217,3 +18270,4 @@ SceneRoots:
   - {fileID: 1259941102}
   - {fileID: 283364217}
   - {fileID: 1532762356}
+  - {fileID: 2047820726}
