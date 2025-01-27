@@ -4,51 +4,31 @@ using UnityEngine;
 
 public class scriptbasisdetectie : MonoBehaviour
 {
-    // Customizable step name and required duration, assignable in the Inspector
     [SerializeField] private float requiredDuration = 2.0f; // Duration in seconds
-
     [SerializeField] private clipboard clipboardTasks; // Reference to the ClipboardTasks script
     [SerializeField] private string taskToComplete; // Task name to signal as completed
 
-    // Internal timer to track how long the action is performed
+    [Header("Feedback Settings")]
+    [SerializeField] private AudioClip completionSound; // Sound to play on completion
+    [SerializeField] private Canvas completionCanvas; // Canvas to show on completion
+    [SerializeField] private float canvasDisplayDuration = 2.0f; // Duration to show the canvas
+
+    [Header("Trigger Settings")]
+    [SerializeField] private List<GameObject> objectsToDeActivateOnEnter; // Objects to activate on enter
+    [SerializeField] private List<GameObject> objectsToactivateOnExit; // Objects to deactivate on exit
+
     private float actionTimer = 0.0f;
     private bool isPerformingAction = false;
-
-    // BoxCollider to modify
     private BoxCollider boxCollider;
-
-    // Method to start counting when the action begins
-
-    // Method to call when this step is completed
-    public void CompleteTask()
-    {
-        if (clipboardTasks != null)
-        {
-            clipboardTasks.RegisterTaskCompletion(taskToComplete);
-        }
-        else
-        {
-            Debug.LogError("ClipboardTasks reference is not assigned in the inspector.");
-        }
-    }
-
-    // Optional: Trigger task completion via a Unity event
-    public void CompleteTaskByName(string taskName)
-    {
-        if (clipboardTasks != null)
-        {
-            clipboardTasks.RegisterTaskCompletion(taskName);
-        }
-        else
-        {
-            Debug.LogError("ClipboardTasks reference is not assigned in the inspector.");
-        }
-    }
+    private AudioSource audioSource; // For playing sound effects
 
     void Start()
     {
         // Get the BoxCollider component on the object
         boxCollider = GetComponent<BoxCollider>();
+
+        // Ensure an AudioSource is present
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -62,10 +42,15 @@ public class scriptbasisdetectie : MonoBehaviour
             {
                 boxCollider.size *= 3f; // Increase the size by 3x
             }
+
+            // Activate objects
+            foreach (GameObject obj in objectsToDeActivateOnEnter)
+            {
+                obj.SetActive(false);
+            }
         }
     }
 
-    // Method to reset if the action is interrupted
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -77,6 +62,12 @@ public class scriptbasisdetectie : MonoBehaviour
             if (boxCollider != null)
             {
                 boxCollider.size /= 3f; // Restore original size
+            }
+
+            // Deactivate objects
+            foreach (GameObject obj in objectsToactivateOnExit)
+            {
+                obj.SetActive(true);
             }
         }
     }
@@ -95,5 +86,36 @@ public class scriptbasisdetectie : MonoBehaviour
                 isPerformingAction = false;  // Stop counting after completion
             }
         }
+    }
+
+    private void CompleteTask()
+    {
+        if (clipboardTasks != null)
+        {
+            clipboardTasks.RegisterTaskCompletion(taskToComplete);
+        }
+        else
+        {
+            Debug.LogError("ClipboardTasks reference is not assigned in the inspector.");
+        }
+
+        // Play completion sound
+        if (completionSound != null)
+        {
+            audioSource.PlayOneShot(completionSound);
+        }
+
+        // Show completion canvas
+        if (completionCanvas != null)
+        {
+            StartCoroutine(ShowCanvasTemporarily());
+        }
+    }
+
+    private IEnumerator ShowCanvasTemporarily()
+    {
+        completionCanvas.gameObject.SetActive(true);
+        yield return new WaitForSeconds(canvasDisplayDuration);
+        completionCanvas.gameObject.SetActive(false);
     }
 }

@@ -1,30 +1,38 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class handgrijpzichtbaarheid : MonoBehaviour
+public class HandgrijpZichtbaarheid : MonoBehaviour
 {
-    [SerializeField] private GameObject ObjectToMakeVisable; // Object to show
-    [SerializeField] private bool isGrabbing = false; // Visibility condition
+    [SerializeField] private Renderer objectRenderer; // Renderer of the object to change color
+    [SerializeField] private Color targetColor = Color.green; // Target color (green)
+    [SerializeField] private float colorTransitionDuration = 2.0f; // Duration for the color transition
+
+    private Color originalColor; // Original color of the object
+    private Coroutine colorChangeCoroutine; // To keep track of the current coroutine
+
+    private void Start()
+    {
+        // Get the original color from the renderer's material
+        if (objectRenderer != null)
+        {
+            originalColor = objectRenderer.material.color;
+        }
+        else
+        {
+            Debug.LogError("Renderer is not assigned in the inspector.");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && isGrabbing) // Check if isGrabbing is true
+        if (other.CompareTag("Player"))
         {
-            // Make the object visible immediately
-            ObjectToMakeVisable.SetActive(true);
-        }
-    }
-    void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player") && !isGrabbing)
-        {
-
-
-        }
-        if (other.CompareTag("Player") && isGrabbing)
-        {
-            ObjectToMakeVisable.SetActive(true);
+            // Start changing to green
+            if (colorChangeCoroutine != null)
+            {
+                StopCoroutine(colorChangeCoroutine); // Stop any ongoing color change
+            }
+            colorChangeCoroutine = StartCoroutine(ChangeColor(targetColor));
         }
     }
 
@@ -32,19 +40,29 @@ public class handgrijpzichtbaarheid : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Hide the object immediately when the player exits
-            ObjectToMakeVisable.SetActive(false);
+            // Start changing back to the original color
+            if (colorChangeCoroutine != null)
+            {
+                StopCoroutine(colorChangeCoroutine); // Stop any ongoing color change
+            }
+            colorChangeCoroutine = StartCoroutine(ChangeColor(originalColor));
         }
     }
 
-    // Optional methods to control the isGrabbing flag
-    public void EnableGrabbing()
+    private IEnumerator ChangeColor(Color targetColor)
     {
-        isGrabbing = true;
-    }
+        // Smoothly transition the color over time
+        float elapsedTime = 0f;
+        Color currentColor = objectRenderer.material.color;
 
-    public void DisableGrabbing()
-    {
-        isGrabbing = false;
+        while (elapsedTime < colorTransitionDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            objectRenderer.material.color = Color.Lerp(currentColor, targetColor, elapsedTime / colorTransitionDuration);
+            yield return null;
+        }
+
+        // Ensure the color is exactly the target color at the end
+        objectRenderer.material.color = targetColor;
     }
 }
