@@ -88,7 +88,7 @@ public class scriptbasisdetectie : MonoBehaviour
         }
     }
 
-    private void CompleteTask()
+    public void CompleteTask()
     {
         if (clipboardTasks != null)
         {
@@ -112,7 +112,7 @@ public class scriptbasisdetectie : MonoBehaviour
         }
     }
 
-    private IEnumerator ShowCanvasTemporarily()
+    public IEnumerator ShowCanvasTemporarily()
     {
         completionCanvas.gameObject.SetActive(true);
         yield return new WaitForSeconds(canvasDisplayDuration);
