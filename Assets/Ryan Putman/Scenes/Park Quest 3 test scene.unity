@@ -26743,6 +26743,34 @@ PrefabInstance:
       propertyPath: _fingerFeatureStateProvider
       value: 
       objectReference: {fileID: 1262830639}
+    - target: {fileID: 2441041420462575281, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441041420462575281, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441041420462575281, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1611816160}
+    - target: {fileID: 2441041420462575281, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441041420462575281, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: CompleteStep
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441041420462575281, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: EHBOStapTestScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441041420462575281, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3675917365490486998, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
       propertyPath: _hand
       value: 
@@ -27104,16 +27132,44 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5110822683489229459, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110822683489229459, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110822683489229459, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
       propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1611816157}
+    - target: {fileID: 5110822683489229459, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1611816160}
+    - target: {fileID: 5110822683489229459, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5110822683489229459, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
       propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CompleteTask
       objectReference: {fileID: 0}
     - target: {fileID: 5110822683489229459, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: CompleteStep
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110822683489229459, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
       propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Grabclipboard, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110822683489229459, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: EHBOStapTestScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110822683489229459, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
+      propertyPath: _whenSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5214767869432807790, guid: 0c3b6942673d465489e9b2ecea3f9f0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31087,6 +31143,18 @@ MonoBehaviour:
       - m_Target: {fileID: 457940231}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1611816160}
+        m_TargetAssemblyTypeName: EHBOStapTestScript, Assembly-CSharp
+        m_MethodName: CompleteStep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -49846,85 +49914,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fe6e11db57984b42be853920807ceb1, type: 3}
---- !u!1001 &6604951007512626162
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 489046541096738102, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: clipboardTasks
-      value: 
-      objectReference: {fileID: 481848178}
-    - target: {fileID: 1459289133681231701, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 110.501015
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459289133681231701, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.6558604
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459289133681231701, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 99.765
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459289133681231701, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.29063216
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459289133681231701, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.52099276
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459289133681231701, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.8021636
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459289133681231701, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.02516839
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459289133681231701, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459289133681231701, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459289133681231701, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2788863131441146928, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: clipboardTasks
-      value: 
-      objectReference: {fileID: 481848178}
-    - target: {fileID: 2788863131441146928, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: completionCanvas
-      value: 
-      objectReference: {fileID: 1133045094}
-    - target: {fileID: 7345525065670645281, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: m_Name
-      value: phone1k
-      objectReference: {fileID: 0}
-    - target: {fileID: 8444229883432387815, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      propertyPath: StappenTracker
-      value: 
-      objectReference: {fileID: 932217769}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 213546429348063262, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 8759125421188981363, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-  m_SourcePrefab: {fileID: 100100000, guid: 8409f18d7a0be1d4594a575c303fa47e, type: 3}
 --- !u!1001 &6974594811605298826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50064,4 +50053,3 @@ SceneRoots:
   - {fileID: 291898801}
   - {fileID: 834988861}
   - {fileID: 1897066066}
-  - {fileID: 6604951007512626162}
