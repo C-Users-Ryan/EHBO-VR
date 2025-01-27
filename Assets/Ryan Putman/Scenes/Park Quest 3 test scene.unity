@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23378,7 +23378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.005, y: -0.279}
+  m_AnchoredPosition: {x: 0.005, y: -0.07}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133045092
@@ -37516,7 +37516,15 @@ PrefabInstance:
     - target: {fileID: 41460541270533322, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
       propertyPath: completionSound
       value: 
-      objectReference: {fileID: 8300000, guid: d0b6ecf8192eb79408e5b7ef3809d5b5, type: 3}
+      objectReference: {fileID: 8300000, guid: be47232a767e0ac449409d880185ee23, type: 3}
+    - target: {fileID: 41460541270533322, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
+      propertyPath: completionCanvas
+      value: 
+      objectReference: {fileID: 1133045094}
+    - target: {fileID: 41460541270533322, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
+      propertyPath: canvasDisplayDuration
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 923235658886830110, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
       propertyPath: _color.a
       value: 0.74509805
@@ -37593,6 +37601,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2180042474701421321, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180042474701421321, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
+      propertyPath: StappenTracker
+      value: 
+      objectReference: {fileID: 932217769}
+    - target: {fileID: 2224752021455758314, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
+      propertyPath: StappenTracker
+      value: 
+      objectReference: {fileID: 932217769}
     - target: {fileID: 2802914618950246936, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
       propertyPath: ObjectToMakeVisable
       value: 
@@ -37636,7 +37656,7 @@ PrefabInstance:
     - target: {fileID: 4382621182826802197, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
       propertyPath: completionSound
       value: 
-      objectReference: {fileID: 8300000, guid: d0b6ecf8192eb79408e5b7ef3809d5b5, type: 3}
+      objectReference: {fileID: 8300000, guid: be47232a767e0ac449409d880185ee23, type: 3}
     - target: {fileID: 4382621182826802197, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
       propertyPath: completionCanvas
       value: 
@@ -37675,7 +37695,7 @@ PrefabInstance:
       objectReference: {fileID: 1611816158}
     - target: {fileID: 6554080540696605796, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
       propertyPath: Priority
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6554080540696605796, guid: d49101da536fcbf42a5bb236aade0029, type: 3}
       propertyPath: m_Volume
@@ -37918,7 +37938,7 @@ MonoBehaviour:
   requiredDuration: 2
   clipboardTasks: {fileID: 481848178}
   taskToComplete: bell 112 via de telefoon
-  completionSound: {fileID: 8300000, guid: d0b6ecf8192eb79408e5b7ef3809d5b5, type: 3}
+  completionSound: {fileID: 8300000, guid: be47232a767e0ac449409d880185ee23, type: 3}
   completionCanvas: {fileID: 1133045094}
   canvasDisplayDuration: 4
   objectsToDeActivateOnEnter: []
@@ -48652,7 +48672,7 @@ MonoBehaviour:
   requiredDuration: 2
   clipboardTasks: {fileID: 481848178}
   taskToComplete: hart massage
-  completionSound: {fileID: 8300000, guid: d0b6ecf8192eb79408e5b7ef3809d5b5, type: 3}
+  completionSound: {fileID: 8300000, guid: be47232a767e0ac449409d880185ee23, type: 3}
   completionCanvas: {fileID: 1133045094}
   canvasDisplayDuration: 3
   objectsToDeActivateOnEnter: []
