@@ -65,9 +65,6 @@ public class IncidentCountdown : MonoBehaviour
         }
 
   
-
-        // Optionally, you can destroy this script to stop further updates
-/*        Destroy(this);*/
     }
 
     // Call this method to start the countdown
