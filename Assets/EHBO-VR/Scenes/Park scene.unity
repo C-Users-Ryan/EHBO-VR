@@ -4993,7 +4993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 329835923001815062, guid: cecd01ca03af0da4f8c8dd15c6cf8147, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: mini usertest scene
+      value: Tutorial scene
       objectReference: {fileID: 0}
     - target: {fileID: 2266685707402731476, guid: cecd01ca03af0da4f8c8dd15c6cf8147, type: 3}
       propertyPath: m_text
@@ -28324,7 +28324,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: mini usertest scene
+          m_StringArgument: Tutorial scene
           m_BoolArgument: 0
         m_CallState: 2
   _whenUnselect:
