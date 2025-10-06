@@ -6,47 +6,56 @@ using UnityEngine.UI;
 
 public class clipboard : MonoBehaviour
 {
-    [System.Serializable] // Ensure Unity can serialize this class
+    [System.Serializable]
     public class Task
     {
-        [Tooltip("Name of the task")] public string taskName; // Name of the task
-        [Tooltip("Image to display task state")] public RawImage taskImage; // RawImage to display task state
-        [Tooltip("Text for the task description")] public TextMeshProUGUI taskText; // TextMeshPro component for task description
-        [Tooltip("Placeholder text for unrevealed tasks")] public string placeholderText; // Placeholder text for unreadable tasks
-        [Tooltip("Texture for completed task")] public Texture completedTexture; // Texture for completed task
+        [Tooltip("Name of the task")] public string taskName;
+        [Tooltip("Image to display task state")] public RawImage taskImage;
+        [Tooltip("Text for the task description")] public TextMeshProUGUI taskText;
+        [Tooltip("Placeholder text for unrevealed tasks")] public string placeholderText;
+        [Tooltip("Texture for completed task")] public Texture completedTexture;
     }
 
-    [SerializeField]
-    [Tooltip("List of tasks to display on the clipboard")]
-    private List<Task> tasks = new List<Task>(); // List of tasks
+    [Header("Task Settings")]
+    [SerializeField] private List<Task> tasks = new List<Task>();
+    private int currentTaskIndex = 0;
 
-    private int currentTaskIndex = 0; // Tracks the index of the current task
+    [Header("Feedback Settings")]
+    [SerializeField] private AudioClip completionSound;       // Geluid bij voltooien taak
+    [SerializeField] private Canvas completionCanvas;         // Canvas die kort getoond wordt
+    [SerializeField] private float canvasDisplayDuration = 2f;// Tijd dat canvas zichtbaar blijft
+
+    private AudioSource audioSource;
 
     void Start()
     {
         InitializeTasks();
+
+        // Zorg dat er een AudioSource op dit object zit
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        // Canvas standaard uitzetten
+        if (completionCanvas != null)
+            completionCanvas.gameObject.SetActive(false);
     }
 
-    // Initialize all tasks, showing only the first task with its description
+    // Initialiseer alle taken (enkel de eerste zichtbaar)
     private void InitializeTasks()
     {
         for (int i = 0; i < tasks.Count; i++)
         {
             if (i == 0)
-            {
-                tasks[i].taskText.text = tasks[i].taskName; // Show first task's name
-            }
+                tasks[i].taskText.text = tasks[i].taskName;
             else
-            {
-                tasks[i].taskText.text = tasks[i].placeholderText; // Show placeholder for other tasks
-            }
+                tasks[i].taskText.text = tasks[i].placeholderText;
         }
     }
 
-    // Method to register a completed task from another script
+    // Wordt aangeroepen door andere scripts om een taak als voltooid te registreren
     public void RegisterTaskCompletion(string taskName)
     {
-        // Ensure the taskName matches the current task
         if (currentTaskIndex < tasks.Count && tasks[currentTaskIndex].taskName == taskName)
         {
             CompleteCurrentTask();
@@ -57,27 +66,52 @@ public class clipboard : MonoBehaviour
         }
     }
 
-    // Completes the current task and updates the clipboard
+    // Voltooit de huidige taak, geeft feedback en onthult de volgende
     private void CompleteCurrentTask()
     {
         Task currentTask = tasks[currentTaskIndex];
 
-        // Update the image to the completed texture
+        // Update afbeelding naar completed texture
         if (currentTask.completedTexture != null)
-        {
             currentTask.taskImage.texture = currentTask.completedTexture;
-        }
 
-        // Proceed to the next task if available
+        // Geef feedback aan speler
+        PlayCompletionFeedback();
+
+        // Ga door naar de volgende taak (indien beschikbaar)
         currentTaskIndex++;
         if (currentTaskIndex < tasks.Count)
         {
             Task nextTask = tasks[currentTaskIndex];
-            nextTask.taskText.text = nextTask.taskName; // Reveal the next task's description
+            nextTask.taskText.text = nextTask.taskName;
         }
         else
         {
             Debug.Log("All tasks completed!");
         }
+    }
+
+    // Feedback bij voltooien taak
+    private void PlayCompletionFeedback()
+    {
+        // Geluid afspelen
+        if (completionSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(completionSound);
+        }
+
+        // Canvas tijdelijk tonen
+        if (completionCanvas != null)
+        {
+            StopAllCoroutines(); // Zorg dat eerdere coroutines niet interfereren
+            StartCoroutine(ShowCanvasTemporarily());
+        }
+    }
+
+    private IEnumerator ShowCanvasTemporarily()
+    {
+        completionCanvas.gameObject.SetActive(true);
+        yield return new WaitForSeconds(canvasDisplayDuration);
+        completionCanvas.gameObject.SetActive(false);
     }
 }
